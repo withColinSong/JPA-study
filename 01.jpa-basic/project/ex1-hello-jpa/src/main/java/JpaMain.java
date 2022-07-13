@@ -22,24 +22,31 @@ public class JpaMain {
         try {
             tx.begin();
 
+            /**
+             * 저장 persist
+             * 조회 find
+             * 수정 member.set.. -> 영속상태에서만 가능하다.
+             * 삭제 remove
+             */
+
             Member member = new Member();
             member.setId("1");
             member.setName("song");
             member.setAge(15);
 
-            // 저장
             em.persist(member);
 
             // 조회
-            System.out.println(em.find(Member.class, member.getId()));
-            em.detach(member);
+            em.find(Member.class, member.getId());
+
+            // 준영속
+            // em.detach(member);
 
             // 수정 - 영속상태에서만 가능하다.
             member.setAge(20);
-            System.out.println(em.find(Member.class, member.getId()));
 
             // 삭제
-            // em.remove(member);
+            em.remove(member);
 
             tx.commit();
         } catch(Exception e) {
@@ -50,4 +57,5 @@ public class JpaMain {
 
         emf.close();
     }
+
 }

@@ -1,7 +1,4 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "MEMBER")
@@ -13,6 +10,10 @@ public class Member {
     @Column(name = "NAME")
     private String userName;
     private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public String getId() {
         return id;
@@ -38,12 +39,29 @@ public class Member {
         this.age = age;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
                 "id='" + id + '\'' +
                 ", userName='" + userName + '\'' +
                 ", age=" + age +
+                ", team=" + team +
                 '}';
     }
 }
