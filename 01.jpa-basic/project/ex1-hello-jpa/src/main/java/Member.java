@@ -3,40 +3,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "MEMBER")
 public class Member {
-    @Id
+    @Id @GeneratedValue
     @Column(name = "ID")
-    private String id;
+    private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "USERNAME")
     private String userName;
-    private int age;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    @Column(name = "TEAM_ID")
+    private Long teamId;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return userName;
-    }
-
-    public void setName(String name) {
-        this.userName = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getUserName() {
@@ -47,21 +29,11 @@ public class Member {
         this.userName = userName;
     }
 
-    public Team getTeam() {
-        return team;
+    public Long getTeamId() {
+        return teamId;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", userName='" + userName + '\'' +
-                ", age=" + age +
-                ", team=" + team +
-                '}';
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 }

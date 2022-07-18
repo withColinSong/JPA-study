@@ -22,31 +22,14 @@ public class JpaMain {
         try {
             tx.begin();
 
-            /**
-             * 저장 persist
-             * 조회 find
-             * 수정 member.set.. -> 영속상태에서만 가능하다.
-             * 삭제 remove
-             */
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
 
             Member member = new Member();
-            member.setId("1");
-            member.setName("song");
-            member.setAge(15);
-
+            member.setUserName("song");
+            member.setTeamId(team.getId());
             em.persist(member);
-
-            // 조회
-            em.find(Member.class, member.getId());
-
-            // 준영속
-            // em.detach(member);
-
-            // 수정 - 영속상태에서만 가능하다.
-            member.setAge(20);
-
-            // 삭제
-            em.remove(member);
 
             tx.commit();
         } catch(Exception e) {
