@@ -10,8 +10,9 @@ public class Member {
     @Column(name = "USERNAME")
     private String userName;
 
-    @Column(name = "TEAM_ID")
-    private Long teamId;
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -29,11 +30,20 @@ public class Member {
         this.userName = userName;
     }
 
-    public Long getTeamId() {
-        return teamId;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", team=" + team +
+                '}';
     }
 }

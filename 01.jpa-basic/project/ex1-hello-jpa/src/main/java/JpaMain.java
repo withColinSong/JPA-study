@@ -27,9 +27,12 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setUserName("song");
-            member.setTeamId(team.getId());
+            member.setUserName("hello");
+            member.setTeam(team);
             em.persist(member);
+
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println(findMember);
 
             tx.commit();
         } catch(Exception e) {
