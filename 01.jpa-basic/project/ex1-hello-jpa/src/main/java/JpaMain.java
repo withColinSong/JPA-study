@@ -19,6 +19,10 @@ public class JpaMain {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
+
+        /**
+         * git issue 테스트 작업하기
+         */
         try {
             tx.begin();
 
