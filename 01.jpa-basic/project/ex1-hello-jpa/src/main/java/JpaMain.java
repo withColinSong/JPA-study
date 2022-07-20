@@ -31,13 +31,13 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setUserName("hello");
+            member.setUserName("member");
             member.setTeam(team);
             em.persist(member);
 
-            Member findMember = em.find(Member.class, member.getId());
-            System.out.println(findMember);
-
+            em.flush();
+            em.clear();
+            
             tx.commit();
         } catch(Exception e) {
             tx.rollback();
