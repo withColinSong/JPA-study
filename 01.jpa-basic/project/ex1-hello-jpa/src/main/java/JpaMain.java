@@ -19,25 +19,9 @@ public class JpaMain {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-
-        /**
-         * git issue 테스트 작업하기
-         */
         try {
             tx.begin();
 
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
-            Member member = new Member();
-            member.setUserName("member");
-            member.setTeam(team);
-            em.persist(member);
-
-            em.flush();
-            em.clear();
-            
             tx.commit();
         } catch(Exception e) {
             tx.rollback();
