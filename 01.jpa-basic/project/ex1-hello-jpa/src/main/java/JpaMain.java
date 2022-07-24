@@ -21,6 +21,8 @@ public class JpaMain {
 
         try {
             tx.begin();
+            Member member = new Member();
+            member.setUserName("song");
 
             tx.commit();
         } catch(Exception e) {

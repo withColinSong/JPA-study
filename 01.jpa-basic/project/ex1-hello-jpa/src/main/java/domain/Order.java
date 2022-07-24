@@ -16,9 +16,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member Member;
-
-    @OneToMany(mappedBy = "order")
-    private List<Order> orderList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "order")
+//    private List<Order> orderList = new ArrayList<>();
 
     private LocalDateTime orderDate;
     private String status;
