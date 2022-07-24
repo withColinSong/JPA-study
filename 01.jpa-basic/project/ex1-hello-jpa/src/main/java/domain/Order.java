@@ -3,7 +3,6 @@ package domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,7 +17,7 @@ public class Order {
     private Member Member;
 
     @OneToMany(mappedBy = "order")
-    private List<Order> orderList = new ArrayList<>();
+    private List<OrderItem> orderItemList = new ArrayList<>();
 
     private LocalDateTime orderDate;
     private String status;

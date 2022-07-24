@@ -8,9 +8,6 @@ public class OrderItem {
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
-    @Column(name = "ORDER_ID")
-    private String orderId;
-
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
@@ -22,21 +19,12 @@ public class OrderItem {
     private int orderPrice;
     private int count;
 
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
     }
 
     public Order getOrder() {

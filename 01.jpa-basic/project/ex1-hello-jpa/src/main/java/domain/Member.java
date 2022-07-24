@@ -18,7 +18,6 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orderList = new ArrayList<>();
 
-
     public Long getId() {
         return id;
     }
