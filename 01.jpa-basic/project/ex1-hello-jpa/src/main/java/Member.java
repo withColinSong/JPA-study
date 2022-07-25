@@ -2,8 +2,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "MEMBER")
 public class Member {
     @Id @GeneratedValue
     @Column(name = "ID")

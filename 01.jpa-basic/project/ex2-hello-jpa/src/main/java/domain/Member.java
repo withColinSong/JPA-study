@@ -1,12 +1,11 @@
 package domain;
 
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@Table(name = "MEMBER")
 public class Member {
-
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
@@ -14,9 +13,6 @@ public class Member {
     private String city;
     private String street;
     private String zipCode;
-//
-//    @OneToMany(mappedBy = "member")
-//    private List<Order> orderList = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -58,4 +54,14 @@ public class Member {
         this.zipCode = zipCode;
     }
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }

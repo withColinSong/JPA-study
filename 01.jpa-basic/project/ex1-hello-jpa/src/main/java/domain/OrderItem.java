@@ -2,7 +2,6 @@ package domain;
 
 import javax.persistence.*;
 
-@Entity
 public class OrderItem {
     @Id @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
