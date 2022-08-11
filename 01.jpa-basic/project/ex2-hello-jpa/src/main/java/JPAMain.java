@@ -18,14 +18,6 @@ public class JPAMain {
 
         try {
             tx.begin();
-            Book book = new Book();
-            book.setName("자료구조와 함께 배우는 알고리즘 입문");
-            book.setPrice(15000);
-            book.setAuthor("강민");
-            book.setISBN("234234");
-
-            em.persist(book);
-            em.flush();
 
             tx.commit();
         } catch(Exception e) {
