@@ -4,6 +4,8 @@ import domain.Item;
 import domain.Member;
 import domain.Order;
 import domain.OrderItem;
+import domain.cascade.Child;
+import domain.cascade.Parent;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,13 +18,21 @@ public class JPAMain {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        tx.begin();
-
         try {
-            // 프록시 테스트
-            Member member = em.getReference(Member.class, 1L);
-            System.out.println(member.getClass()); // class domain.Member$HibernateProxy$sNgDwKnZ
-            System.out.println(member.getName()); // 이때 쿼리가 실행된다.
+
+            tx.begin();
+            Parent parent = new Parent();
+            Child child1 = new Child();
+            Child child2 = new Child();
+
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
+            em.persist(child1);
+            em.persist(child2);
+
+            tx.commit();
 
         } catch(Exception e) {
             tx.rollback();
