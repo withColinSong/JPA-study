@@ -14,33 +14,42 @@ import java.util.List;
 public class JPAMain {
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
 
-        try {
+        Member member = new Member();
+        member.setName("JPAMain");
+        Member member1 = member;
+        member1.setName("song");
+        System.out.println("member=" + member.getName());
+        System.out.println("member1"+member1.getName());
 
-            tx.begin();
-            Parent parent = new Parent();
-            Child child1 = new Child();
-            Child child2 = new Child();
 
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-            em.persist(child1);
-            em.persist(child2);
-
-            tx.commit();
-
-        } catch(Exception e) {
-            tx.rollback();
-            System.out.println(e.getMessage());
-        } finally {
-            em.close();
-        }
-
-        emf.close();
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+//        EntityManager em = emf.createEntityManager();
+//        EntityTransaction tx = em.getTransaction();
+//
+//        try {
+//
+//            tx.begin();
+//            Parent parent = new Parent();
+//            Child child1 = new Child();
+//            Child child2 = new Child();
+//
+//            parent.addChild(child1);
+//            parent.addChild(child2);
+//
+//            em.persist(parent);
+//            em.persist(child1);
+//            em.persist(child2);
+//
+//            tx.commit();
+//
+//        } catch(Exception e) {
+//            tx.rollback();
+//            System.out.println(e.getMessage());
+//        } finally {
+//            em.close();
+//        }
+//
+//        emf.close();
     }
 }
