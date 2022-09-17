@@ -25,9 +25,18 @@ public class Member {
     ////////////////////
 
     @Builder
-    public Member(String name, Team team) {
+    public Member(String name) {
         this.name = name;
+    }
+
+    // 편의 메서드
+    public void addTeam(Team team) {
+        if(this.team != null) {
+            this.team.getMembers().remove(this);
+        }
+
         this.team = team;
+        team.getMembers().add(this);
     }
 
 }

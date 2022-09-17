@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 class EntityTest {
@@ -24,12 +25,11 @@ class EntityTest {
                 .name("Development")
                 .build();
 
-        System.out.println(team.getId());
-
         Member member = Member.builder()
-                .team(team)
                 .name("song")
                 .build();
+
+        member.addTeam(team); // 편의 메서드
 
         em.persist(team);
         em.persist(member);
@@ -39,9 +39,16 @@ class EntityTest {
 
         // when
         Member findMember = em.find(Member.class, member.getId());
+        Team findTeam = em.find(Team.class, team.getId());
 
         // then
-//        Assertions.assertEquals(findMember.getTeam().getName(), team.getName());
+        Assertions.assertEquals(
+                findMember.getName(),
+                findTeam.getMembers()
+                        .stream()
+                        .map(Member::getName)
+                        .collect(Collectors.joining())
+        );
 
     }
 
