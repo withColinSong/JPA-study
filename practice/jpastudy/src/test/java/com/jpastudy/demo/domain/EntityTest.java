@@ -29,7 +29,10 @@ class EntityTest {
                 .name("song")
                 .build();
 
-        member.addTeam(team); // 편의 메서드
+//        member.addTeam(team); // 편의 메서드
+
+        team.getMembers().add(member);
+        member.addTeam(team);
 
         em.persist(team);
         em.persist(member);
