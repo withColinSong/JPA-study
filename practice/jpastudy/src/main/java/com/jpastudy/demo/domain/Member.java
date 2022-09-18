@@ -15,12 +15,10 @@ public class Member {
     private Long id;
     private String name;
 
+    @OneToOne(fetch = FetchType.LAZY,
+              mappedBy = "member")
+    private Locker locker;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID",
-                updatable = false,
-                insertable = false)
-    private Team team;
 
     ////////////////////
     // constructor, getter, setter
@@ -31,8 +29,9 @@ public class Member {
         this.name = name;
     }
 
-    public void updateSetName(String name) {
-        this.name = name;
-    }
 
+    // 편의메서드
+    public void addLocker(Locker locker) {
+        this.locker = locker;
+    }
 }

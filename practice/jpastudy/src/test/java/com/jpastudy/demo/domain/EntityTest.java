@@ -24,61 +24,27 @@ class EntityTest {
     @Rollback(false)
     public void 테스트() {
         //given
-        Team team1 = Team.builder()
-                .name("Development")
-                .build();
-
-        Team team2 = Team.builder()
-                .name("Design")
-                .build();
-
         Member member1 = Member.builder()
                 .name("song")
                 .build();
 
-        Member member2 = Member.builder()
-                .name("kim")
-                .build();
+        Locker locker = new Locker();
+        member1.addLocker(locker);
 
-//        team1.addMember(member1);
-//        team2.addMember(member2);
-
+        em.persist(locker);
         em.persist(member1);
-        em.persist(member2);
-        em.persist(team1);
-        em.persist(team2);
 
         em.flush();
         em.clear();
 
         // when
         Member findMember = em.find(Member.class, member1.getId());
-        Team findTeam = em.find(Team.class, team1.getId());
+        Locker findLocker = em.find(Locker.class, locker.getId());
 
         // then
         Assertions.assertEquals(
-                findMember.getName(),
-                findTeam.getMembers()
-                        .stream()
-                        .filter(x-> x.getId().equals(member1.getId()))
-                        .map(Member::getName)
-                        .collect(Collectors.joining())
-        );
-
+                findMember.getLocker().getId(),
+                findLocker.getMember().getLocker().getId());
     }
 
-    @Test
-    @Transactional
-    @Rollback(false)
-    public void  테스트코드() {
-        // given
-
-
-        // when
-
-
-        // then
-
-
-    }
 }
