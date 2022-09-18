@@ -15,10 +15,12 @@ public class Member {
     private Long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID",
+                updatable = false,
+                insertable = false)
+    private Team team;
 
     ////////////////////
     // constructor, getter, setter
@@ -29,14 +31,8 @@ public class Member {
         this.name = name;
     }
 
-    // 편의 메서드
-    public void addTeam(Team team) {
-        if(this.team != null) {
-            this.team.getMembers().remove(this);
-        }
-
-        this.team = team;
-        team.getMembers().add(this);
+    public void updateSetName(String name) {
+        this.name = name;
     }
 
 }
