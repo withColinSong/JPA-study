@@ -5,7 +5,7 @@
 
 ### 1.1. 다대일 단방향
 
-![img_2.png](img_2.png)
+![img_2.png](assets/img_2.png)
 
 - Member member.team으로 팀 엔티티를 참조할 수 있지만, 반대로 Team에는 Member를 참조하는 필드가 없다.
 - 따라서, Member와 Team은 다대일 단방향 연관관계
@@ -20,13 +20,13 @@ private Team team;
 - Member.team 필드로 회원 테이블의 TEAM_ID 외래 키와 매핑하여 관리
 
 #### 1.1.1. 다대일 단방향 Test
-![img_1.png](img_1.png)
+![img_1.png](assets/img_1.png)
 1. em.flush(), clear()를 통해 INSERT 구문 실행 및 영속성 컨텍스트 캐시가 비워진 상황이다. 
 2. em.find()를 통해  SELECT 구문이 실행
 3. findMember.getTeam().getName()을 통해 SELECT 구문 실행 
 
 ### 1.2. 다대일 양방향
-![img.png](img.png)
+![img.png](assets/img.png)
 
 > 양방향은 외래 키가 있는 쪽이 연관관계의 주인
 - 일대다와 다대일 연관관계는 항상 다(N)에 외래키 존재
@@ -54,12 +54,12 @@ public void addTeam(Team team) {
 ```
 
 #### 1.2.2. 다대일 양방향 Test
-![img_5.png](img_5.png)
+![img_5.png](assets/img_5.png)
 - 편의 메서드를 통해 객체 간의 연관관계를 맺어주는 작업이 필요.
 - [1.1.1.] when, then은 동일하다.
 
 ## 2. 일대다
-![img_3.png](img_3.png)
+![img_3.png](assets/img_3.png)
 
 ### 2.1. 일대다 단방향
 - 하나의 Team은 여러 Member를 참조할 수 있는데 이때 일대다 관계라고 한다.
@@ -73,11 +73,11 @@ public void addTeam(Team team) {
 - Member의 TEAM_ID 외래 키에 아무 값도 저장되지 않는다.
 
 ### 1.2.1. 일대다 단방향 Test
-![img_6.png](img_6.png)
+![img_6.png](assets/img_6.png)
 
 ### 2.2. 일대다 양방향
 
-![img_8.png](img_8.png)
+![img_8.png](assets/img_8.png)
 
 ### 2.2.1. 양방향시 주의점
 - 일대다 양방향 매핑은 존재하지 않는다.
@@ -98,16 +98,16 @@ public void addTeam(Team team) {
 - `장점`: 주 테이블이 외래 키를 가지고 있어 테이블만 확인해도 대상 테이블과 연관관계가 있는지 확인 가능
 
 ### 3.1.1 단방향
-![img_10.png](img_10.png)
+![img_10.png](assets/img_10.png)
 
 #### 3.1.1.1. 단방향 Test
-![img_9.png](img_9.png)
+![img_9.png](assets/img_9.png)
 
 ### 3.2.1. 양방향
-![img_11.png](img_11.png)
+![img_11.png](assets/img_11.png)
 
 #### 3.2.1.1. 양방향 Test
-![img_12.png](img_12.png)
+![img_12.png](assets/img_12.png)
 
 ## 3.2. 대상 테이블에 외래키
 - 데이터베이스 개발자들은 보통 대상 테이블에 외래 키를 두는 것을 선호
@@ -117,7 +117,7 @@ public void addTeam(Team team) {
 - 일대일 관계 중 대상 테이블에 외래 키가 있는 단방향 관계는 JPA에서 지원하지 않는다.
 
 ### 3.2.2. 양방향
-![img_13.png](img_13.png)
+![img_13.png](assets/img_13.png)
 
 #### 3.2.2.1. 주의점
 - 프록시를 사용할 때 외래 키를 직접 관리하지 않는 일대일 관계는 지연 로딩으로 설정해도 즉시 로딩된다.
@@ -129,7 +129,7 @@ public void addTeam(Team team) {
 - 보통 다대다 관계는 일대다, 다대일 관계로 풀어내는 연결 테이블 사용
 
 ## 4.1. 다대다 단방향
-![img_15.png](img_15.png)
+![img_15.png](assets/img_15.png)
 1. `JoinTable.name`: 연결 테이블 지정
 2. `JoinTable.joinColumns`: 현재 방향인 회원과 매핑한 조인 컬럼 정보를 지정
 3. `JoinTable.inverseJoinColumns` : 반대 방향인 상품과 매핑할 조인 컬럼 정보 지정
@@ -137,10 +137,10 @@ public void addTeam(Team team) {
 - Member_Product 엔티티 없이 매핑 완료
 
 ## 4.2. 다대다 양방향
-![img_16.png](img_16.png)
+![img_16.png](assets/img_16.png)
 
 ### 4.2.1. 단점
-![img_17.png](img_17.png)
+![img_17.png](assets/img_17.png)
 
 - 실무 한계 
 - Member_Product에 컬럼을 추가하면 더는 @ManyToMany를 사용할 수 없다.
