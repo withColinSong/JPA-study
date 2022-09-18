@@ -15,10 +15,11 @@ public class Member {
     private Long id;
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY,
-              mappedBy = "member")
-    private Locker locker;
-
+    @ManyToMany
+    @JoinTable(name = "MEMBER_PRODUCT",
+            joinColumns = @JoinColumn(name = "MEMBER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
+    private List<Product> products = new ArrayList<>();
 
     ////////////////////
     // constructor, getter, setter
@@ -30,8 +31,4 @@ public class Member {
     }
 
 
-    // 편의메서드
-    public void addLocker(Locker locker) {
-        this.locker = locker;
-    }
 }

@@ -23,28 +23,20 @@ class EntityTest {
     @Transactional
     @Rollback(false)
     public void 테스트() {
-        //given
-        Member member1 = Member.builder()
+
+        Member member = Member.builder()
                 .name("song")
                 .build();
 
-        Locker locker = new Locker();
-        member1.addLocker(locker);
+        Product product = Product.builder()
+                            .name("IPAD")
+                            .build();
 
-        em.persist(locker);
-        em.persist(member1);
+        member.getProducts().add(product);
 
-        em.flush();
-        em.clear();
+        em.persist(member);
+        em.persist(product);
 
-        // when
-        Member findMember = em.find(Member.class, member1.getId());
-        Locker findLocker = em.find(Locker.class, locker.getId());
-
-        // then
-        Assertions.assertEquals(
-                findMember.getLocker().getId(),
-                findLocker.getMember().getLocker().getId());
     }
 
 }

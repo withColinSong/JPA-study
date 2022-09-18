@@ -15,9 +15,6 @@ public class Locker {
     @Id @GeneratedValue
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
-    private Member member;
     ////////////////////
     // constructor, getter, setter
     ////////////////////

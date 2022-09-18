@@ -125,8 +125,15 @@ public void addTeam(Team team) {
 - 프록시의 한계 때문에 발생하는 문제이지만 해결방법이 있다.
 
 # 4. 다대다
-
+- 관계형 데이터베이스는 정규화된 테이블 2개로 다대다 관계를 표현할 수 없다.
+- 보통 다대다 관계는 일대다, 다대일 관계로 풀어내는 연결 테이블 사용
 
 ## 4.1. 다대다 단방향
+![img_15.png](img_15.png)
+1. `JoinTable.name`: 연결 테이블 지정
+2. `JoinTable.joinColumns`: 현재 방향인 회원과 매핑한 조인 컬럼 정보를 지정
+3. `JoinTable.inverseJoinColumns` : 반대 방향인 상품과 매핑할 조인 컬럼 정보 지정
+
+- Member_Product 엔티티 없이 매핑 완료
 
 ## 4.2. 다대다 양방향
