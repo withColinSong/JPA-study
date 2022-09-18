@@ -137,3 +137,12 @@ public void addTeam(Team team) {
 - Member_Product 엔티티 없이 매핑 완료
 
 ## 4.2. 다대다 양방향
+![img_16.png](img_16.png)
+
+### 4.2.1. 단점
+![img_17.png](img_17.png)
+
+- 실무 한계 
+- Member_Product에 컬럼을 추가하면 더는 @ManyToMany를 사용할 수 없다.
+- 주문 엔티티나, 상품 엔티티에는 추가한 컬럼들을 매핑 할 수 없기 때문이다.
+

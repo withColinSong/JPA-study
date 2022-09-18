@@ -19,6 +19,8 @@ public class Product {
     private Long id;
     private String name;
 
+    @ManyToMany
+    private List<Member> members;
 
     ////////////////////
     // constructor, getter, setter
