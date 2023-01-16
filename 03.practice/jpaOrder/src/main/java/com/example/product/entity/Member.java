@@ -1,5 +1,7 @@
 package com.example.product.entity;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,4 +21,14 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
+
+    protected Member() { }
+
+    @Builder
+    public Member(String name, String city, String street, int zipCode) {
+        this.name = name;
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+    }
 }

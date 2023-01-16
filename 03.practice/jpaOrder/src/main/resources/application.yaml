@@ -4,11 +4,25 @@ spring:
     username: sa
     password: 1234
     driver-class-name: org.h2.Driver
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
+
     show-sql: true
+
     properties:
       hibernate:
         format_sql: true
+        jdbc:
+          batch_size: 1000
+        order_updates: true
+        order_inserts: true
+    defer-datasource-initialization: true
+
+
+  sql:
+    init:
+      mode: always
