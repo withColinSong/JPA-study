@@ -1,3 +1,4 @@
+/*
 # MEMBER
 INSERT INTO ITEM (MEMBER_ID, CITY, NAME, STREET, ZIP_CODE)
 VALUES(1, 'seoul', 'song', 'the' , 13245);
@@ -14,3 +15,4 @@ VALUES (3, 'MacBookAir', 15000000, 3)
 ;
 
 
+*/
