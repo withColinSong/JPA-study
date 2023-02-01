@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "ORDERS") // Order sql 예약어
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue
