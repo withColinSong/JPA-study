@@ -1,10 +1,12 @@
 package com.example.product.entity;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Getter
 @Entity
 public class Member {
 

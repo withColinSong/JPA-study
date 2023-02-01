@@ -1,11 +1,13 @@
 package com.example.product.entity;
 
 import com.example.product.enums.OrderStatus;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "ORDERS") // Order sql 예약어
 public class Order {
@@ -21,6 +23,10 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;          // 배송정보
 
     private LocalDateTime OrderDate;    // 주문시간
 

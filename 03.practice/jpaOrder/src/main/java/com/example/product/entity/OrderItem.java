@@ -1,7 +1,12 @@
 package com.example.product.entity;
 
+import com.example.product.entity.item.Item;
+import lombok.Getter;
+
 import javax.persistence.*;
 
+
+@Getter
 @Entity
 public class OrderItem {
 
