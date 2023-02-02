@@ -17,11 +17,12 @@ public class OrderItem {
     private int count;      // 구매양
     private int price;      // 구매 금액
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
     private Order order;    // 주문 아이디
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ITEM_ID")
     private Item item;      // 아이템
+
 }

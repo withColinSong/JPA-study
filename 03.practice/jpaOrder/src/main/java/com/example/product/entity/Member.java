@@ -17,9 +17,8 @@ public class Member extends BaseEntity {
 
     private String name;
 
-    private String city;
-    private String street;
-    private int zipCode;
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
@@ -27,10 +26,8 @@ public class Member extends BaseEntity {
     protected Member() { }
 
     @Builder
-    public Member(String name, String city, String street, int zipCode) {
+    public Member(String name, Address address) {
         this.name = name;
-        this.city = city;
-        this.street = street;
-        this.zipCode = zipCode;
+        this.address = address;
     }
 }

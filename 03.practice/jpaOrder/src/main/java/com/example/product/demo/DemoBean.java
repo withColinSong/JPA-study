@@ -1,5 +1,6 @@
 package com.example.product.demo;
 
+import com.example.product.entity.Address;
 import com.example.product.entity.Member;
 import com.example.product.repository.MemberRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -22,23 +23,29 @@ public class DemoBean {
 
             repository.save(Member.builder()
                             .name("song1")
-                            .city("seoul")
-                            .street("목동")
-                            .zipCode(00001)
+                            .address(Address.builder()
+                                        .city("seoul")
+                                        .street("목동")
+                                        .zipCode(00001)
+                                        .build())
                             .build());
 
             repository.save(Member.builder()
                             .name("song2")
-                            .city("seoul")
-                            .street("신정역")
-                            .zipCode(00002)
+                            .address(Address.builder()
+                                        .city("seoul")
+                                        .street("신정역")
+                                        .zipCode(00002)
+                                        .build())
                             .build());
 
             repository.save(Member.builder()
                             .name("song3")
-                            .city("seoul")
-                            .street("오목교")
-                            .zipCode(00003)
+                            .address(Address.builder()
+                                        .city("seoul")
+                                        .street("오목교")
+                                        .zipCode(00003)
+                                        .build())
                             .build());
 
         };
