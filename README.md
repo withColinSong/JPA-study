@@ -3,4 +3,4 @@
 
 - [01.JPA basic](01.jpa-basic)
 - [02.JPA Application](02.jpa-application)
-- [Legacy](Legacy)
+- [03.practice](03.practice)
