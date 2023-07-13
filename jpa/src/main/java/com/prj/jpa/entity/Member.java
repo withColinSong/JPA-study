@@ -25,7 +25,8 @@ public class Member {
 
     }
 
-    public void setName(String name) {
+    public Member setName(String name) {
         this.name = name;
+        return this;
     }
 }
