@@ -5,8 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
+@DynamicUpdate
+@Getter
 @NoArgsConstructor
 @Entity
 public class Item {
@@ -23,5 +27,12 @@ public class Item {
         this.name = name;
         this.count = count;
         this.price = price;
+    }
+
+    public Item modifyItem(String name, int count, int price) {
+        this.name = name;
+        this.count = count;
+        this.price = price;
+        return this;
     }
 }
