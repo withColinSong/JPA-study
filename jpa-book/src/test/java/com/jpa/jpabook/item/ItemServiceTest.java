@@ -1,7 +1,10 @@
 package com.jpa.jpabook.item;
 
 import com.jpa.jpabook.domain.Item;
+import com.jpa.jpabook.dto.ItemModifyDto;
 import com.jpa.jpabook.repository.ItemRepository;
+import com.jpa.jpabook.service.ItemService;
+import com.jpa.jpabook.service.ItemServiceImpl;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +19,11 @@ import static org.assertj.core.api.Assertions.*;
 class ItemServiceTest {
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private ItemService itemService;
+
 
     @Test
     @Transactional
@@ -51,5 +58,14 @@ class ItemServiceTest {
         List<Item> saves = itemRepository.saveAll(items);
         assertThat(saves.size()).isEqualTo(4);
 
+    }
+
+    @Test
+    @Transactional
+    @Rollback(false)
+    void modifyItem() {
+        ItemModifyDto dto = new ItemModifyDto(1L, "test", 3, 4);
+        Item modify = itemService.modify(dto);
+        assertThat(dto.getId().compareTo(modify.getId()));
     }
 }
