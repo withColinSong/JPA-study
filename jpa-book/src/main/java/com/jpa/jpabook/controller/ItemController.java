@@ -4,7 +4,7 @@ import com.jpa.jpabook.dto.ItemApplyDto;
 import com.jpa.jpabook.dto.ItemApplyRequest;
 import com.jpa.jpabook.dto.ItemModifyDto;
 import com.jpa.jpabook.dto.ItemModifyRequest;
-import com.jpa.jpabook.service.ItemServiceImpl;
+import com.jpa.jpabook.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ItemController {
 
-    private final ItemServiceImpl itemService;
+    private final ItemService itemService;
     @PostMapping("/apply")
     public ResponseEntity<?> save(@RequestBody ItemApplyRequest itemRequest) {
 

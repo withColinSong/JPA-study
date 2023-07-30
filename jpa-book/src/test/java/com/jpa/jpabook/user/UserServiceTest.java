@@ -3,9 +3,12 @@ package com.jpa.jpabook.user;
 import com.jpa.jpabook.domain.Member;
 import com.jpa.jpabook.repository.UserRepository;
 import static org.assertj.core.api.Assertions.*;
+
+import com.jpa.jpabook.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +16,17 @@ import java.util.List;
 @SpringBootTest
 public class UserServiceTest {
 
+    private final UserRepository userRepository;
+    private final UserService userService;
+
     @Autowired
-    UserRepository userRepository;
+    public UserServiceTest(UserRepository userRepository, UserService userService) {
+        this.userRepository = userRepository;
+        this.userService = userService;
+    }
 
     @Test
+    @Commit
     void createUsers() {
         List<Member> users = new ArrayList<>();
         users.add(Member.builder()
@@ -35,4 +45,5 @@ public class UserServiceTest {
         assertThat(members.size()).isEqualTo(2);
 
     }
+
 }

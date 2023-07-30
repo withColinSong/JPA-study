@@ -4,7 +4,6 @@ import com.jpa.jpabook.domain.Item;
 import com.jpa.jpabook.dto.ItemModifyDto;
 import com.jpa.jpabook.repository.ItemRepository;
 import com.jpa.jpabook.service.ItemService;
-import com.jpa.jpabook.service.ItemServiceImpl;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,4 +67,5 @@ class ItemServiceTest {
         Item modify = itemService.modify(dto);
         assertThat(dto.getId().compareTo(modify.getId()));
     }
+
 }

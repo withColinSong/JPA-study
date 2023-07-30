@@ -35,4 +35,8 @@ public class Item {
         this.price = price;
         return this;
     }
+
+    public Integer modifyItemCount(int count) {
+        return this.count = this.count - count;
+    }
 }

@@ -3,7 +3,6 @@ package com.jpa.jpabook.service;
 import com.jpa.jpabook.domain.Member;
 import com.jpa.jpabook.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
